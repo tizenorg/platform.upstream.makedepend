@@ -6,6 +6,7 @@ Summary:        Utility to create dependencies in makefiles
 Url:            http://xorg.freedesktop.org/
 Group:          Development/Tools/Building
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
+Source1001: 	makedepend.manifest
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
@@ -22,6 +23,7 @@ has changed.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure
@@ -31,6 +33,7 @@ make %{?_smp_mflags}
 %make_install
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc COPYING 
 %{_bindir}/makedepend
