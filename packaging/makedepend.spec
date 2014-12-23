@@ -1,13 +1,12 @@
 Name:           makedepend
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 License:        MIT
 Summary:        Utility to create dependencies in makefiles
 Url:            http://xorg.freedesktop.org/
 Group:          Development/Tools/Building
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
-Source1001: 	makedepend.manifest
-BuildRequires:  pkg-config
+Source1001:     makedepend.manifest
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
 Conflicts:      xorg-x11-util-devel <= 7.6
@@ -27,7 +26,7 @@ cp %{SOURCE1001} .
 
 %build
 %configure
-make %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
 %install
 %make_install
@@ -35,8 +34,6 @@ make %{?_smp_mflags}
 %files
 %manifest %{name}.manifest
 %defattr(-,root,root)
-%doc COPYING 
+%license COPYING 
 %{_bindir}/makedepend
 %{_mandir}/man1/makedepend.1%{?ext_man}
-
-%changelog
